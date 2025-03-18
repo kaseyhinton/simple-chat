@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script type="importmap">
+      {
+        "imports": {
+          "lit": "./dependencies/lit-html.js"
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/dependencies/pico.min.css" />
+    <link rel="stylesheet" href="/dependencies/pico-colors.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8" />
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple chat</title>
+    <script type="module">
+      import renderMyApp from "./my-app.js";
+
+      window.addEventListener("DOMContentLoaded", () => {
+        const app = document.getElementById("app");
+        renderMyApp(app);
+      });
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html>

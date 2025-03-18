@@ -1,0 +1,12 @@
+{
+    "name": "lit-pico-starter",
+    "private": true,
+    "version": "0.1.0",
+    "type": "module",
+    "scripts": {
+      "start": "ws --spa index.html --port 3020"
+    },
+    "devDependencies": {
+      "local-web-server": "5.4.0"
+    }
+  }

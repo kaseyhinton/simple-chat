@@ -1,0 +1,9 @@
+[hidden] {
+    display: none;
+}
+
+body {
+    background-color: var(--pico-background-color);
+    color: var(--pico-color);
+    min-height: 100vh;
+}
