@@ -17,7 +17,9 @@ const unsafeHTML = (message) => {
  * @returns {string} - The parsed HTML string.
  */
 function parseMarkdown(markdown) {
-  markdown = markdown.replace(/<think>.*?<\/think>/gims, "");
+  if (!store.state.includeThinking) {
+    markdown = markdown.replace(/<think>.*?<\/think>/gims, "");
+  }
 
   // Replace code blocks (```)
   markdown = markdown.replace(
@@ -115,19 +117,21 @@ const chatTemplate = () => html`
     }
 
     span.content {
-      display: grid;
       font-size: smaller;
-      white-space: break-spaces;
-    }
-
-    span.content div {
-      color: var(--pico-color-slate-600);
-      font-size: smaller;
-      display: grid;
     }
 
     span.content.error {
       background: var(--pico-color-red-50);
+    }
+
+    think {
+      color: var(--pico-secondary);
+      opacity: 0.8;
+      padding: 0 1rem 1rem 1rem;
+      background-color: var(--pico-code-background-color);
+      border-radius: var(--pico-border-radius);
+      font-size: small;
+      display: block;
     }
 
     p[thinking] {

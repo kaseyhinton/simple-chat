@@ -8,6 +8,7 @@ const store = {
     messages: [],
     prompt: '',
     theme: "light",
+    includeThinking: true,
     settingsOpen: false
   },
   actions: {

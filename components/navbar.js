@@ -44,19 +44,37 @@ const navbarTemplate = () => html`
       <p>
         Adjust the URL where your LLM api exists and the requested model to use.
       </p>
-      <input placeholder="URL"
-      @input=${(e) =>
-        store.dispatch("requestUpdate", {
-          ...store.state,
-          url: e.target.value,
-        })}
-      .value=${store.state.url} / > <input placeholder="Model"
-      @input=${(e) =>
-        store.dispatch("requestUpdate", {
-          ...store.state,
-          model: e.target.value,
-        })}
-      .value=${store.state.model} / >
+      <label>
+        URL <input placeholder="http://localhost:11434/api/generate"
+        @input=${(e) =>
+          store.dispatch("requestUpdate", {
+            ...store.state,
+            url: e.target.value,
+          })}
+        .value=${store.state.url} / >
+      </label>
+      <label>
+        Model <input placeholder="deepseek-r1:1.5b"
+        @input=${(e) =>
+          store.dispatch("requestUpdate", {
+            ...store.state,
+            model: e.target.value,
+          })}
+        .value=${store.state.model} / >
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          role="switch"
+          @click=${() =>
+            store.dispatch("requestUpdate", {
+              ...store.state,
+              includeThinking: !store.state.includeThinking,
+            })}
+          ?checked=${store.state.includeThinking}
+        />
+        Allow thinking in response
+      </label>
       <footer>
         <button
           @click=${() =>
