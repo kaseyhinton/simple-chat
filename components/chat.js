@@ -2,6 +2,8 @@ import { html, render } from "lit";
 import store from "../services/store.js"; // Import the singleton store
 
 const unsafeHTML = (message) => {
+  if (message.isError) return message.content;
+  if (!message.content) return "";
   const node = document.createElement("div");
   const content = parseMarkdown(message.content);
   node.innerHTML = content;
@@ -121,7 +123,7 @@ const chatTemplate = () => html`
     }
 
     span.content.error {
-      background: var(--pico-color-red-50);
+      color: var(--pico-color-red-400);
     }
 
     think {
