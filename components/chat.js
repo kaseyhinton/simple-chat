@@ -7,10 +7,14 @@ const unsafeHTML = (message) => {
   const node = document.createElement("div");
   const content = parseMarkdown(message.content);
   node.innerHTML = content;
-  const parentNode = document.getElementById(message.id);
-  if (parentNode) {
-    parentNode.replaceChildren(node);
-  }
+  // TODO: fix setTimeout hack
+  // dom doesn't have the node with id yet, so we wait a tick
+  setTimeout(() => {
+    const parentNode = document.getElementById(message.id);
+    if (parentNode) {
+      parentNode.replaceChildren(node);
+    }
+  }, 0);
 };
 
 /**
@@ -74,7 +78,7 @@ function parseMarkdown(markdown) {
 const chatTemplate = () => html`
   <style>
     .messages-container {
-      height: calc(100vh - 165px);
+      height: calc(100vh - 170px);
       overflow-y: auto;
     }
 
