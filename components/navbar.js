@@ -77,6 +77,18 @@ const navbarTemplate = () => html`
       </label>
       <footer>
         <button
+          class="outline secondary"
+          @click=${() =>
+            store.dispatch("requestUpdate", {
+              ...store.state,
+              messages: [],
+              isDirty: true,
+              settingsOpen: false,
+            })}
+        >
+          Clear chat
+        </button>
+        <button
           @click=${() =>
             store.dispatch("requestUpdate", {
               ...store.state,
